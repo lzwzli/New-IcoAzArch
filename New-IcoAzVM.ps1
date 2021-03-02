@@ -5,11 +5,11 @@
 # VMs can be created in any region that is supported by your subscription.
 #
 # Author: Zhi Wei Li
-# Dev Version: 5.7
-# Publish date: Feb 7th, 2021
+# Dev Version: 5.9
+# Publish date: Feb 24th, 2021
 # 
-# Release Version: 1.5.0
-# Release date: Feb 7th, 2021
+# Release Version: 1.6.0
+# Release date: Mar 2nd, 2021
 #
 #=============================================================================================================================
 
@@ -567,7 +567,12 @@ ELSE{
 
 #Keep asking for resource group name if user doesn't set $setResourceGroupName to N
 while($setResourceGroupName -eq 'Y'){
-    #Initial ask for resource group name      
+    #Initialize resourceGroupExist to false, setRegion to true, and checkVMexist to false assuming resourcegroup doesn't exist.
+    $resourceGroupExist=$false
+    $setRegion=$true
+    $checkVMexist=$false
+
+    #Initial ask for resource group name
     $resourceGroupName=GetResourceGroupName
 
     #Set virtual network name
@@ -1160,6 +1165,44 @@ ELSE {
         For($i=0;$i -lt $numberVMs; $i++){
             PrintConfirmationEntry ($virtualMachineName + '-' + ($i+1+$VMsCount).ToString()+':') $VMDNS[$i]
         }
-        Write-Host ('='*200)
+        
+        IF($Confirm){
+            #Continue
+        }
+        ELSE{
+            write-host ('-' *200) -ForegroundColor Green -NoNewline
+            write-host ' '
+            write-host 'Parameterized command:' -ForegroundColor Green -NoNewline
+            write-host ' '
+            write-host './New-IcoAzVM.ps1 -SubscriptionName ''' -NoNewline
+            write-host $AzContext.Subscription.Name -NoNewline
+            write-host ''' -ResourceGroupName ''' -NoNewline 
+            write-host $resourceGroupName -NoNewline
+            write-host ''' -Location ''' -nonewline 
+            write-host $location -nonewline
+            write-host ''' -VMCount ''' -nonewline
+            write-host $numberVMs -nonewline
+            write-host ''' -VMSize ''' -nonewline
+            write-host $vmSize -nonewline
+            write-host ''' -UseSSD ''' -nonewline
+            write-host $SSD -nonewline 
+            write-host ''' -VMPrefix ''' -nonewline
+            write-host $vmName -nonewline
+            write-host ''' -ICONICSversion ''' -nonewline
+            write-host $ICONICSversion -nonewline
+            write-host ''' -Username ''' -nonewline
+            write-host $username -nonewline
+            write-host ''' -Password ''' -nonewline
+            write-host $password -nonewline
+            write-host '''' -NoNewline
+            IF($vnetExist -eq $false){
+                write-host '-AllowHTTP ''' -nonewline
+                write-host $AllowHTTP -nonewline
+                write-host ''' -AllowFWX ''' -nonewline
+                write-host $AllowFWX -nonewline
+                write-host ''''
+            }
+            Write-Host ('='*200)
+        }
     }
 }

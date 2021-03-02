@@ -9,8 +9,8 @@
 # Dev Version: 1.2
 # Publish date: Feb 7th, 2021
 # 
-# Release Version: 1.0.0
-# Release date: Feb 7th 2021
+# Release Version: 1.1.0
+# Release date: Mar 2nd 2021
 #
 #=============================================================================================================================
 
