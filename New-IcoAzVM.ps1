@@ -5,11 +5,11 @@
 # VMs can be created in any region that is supported by your subscription.
 #
 # Author: Zhi Wei Li
-# Dev Version: 5.9
+# Dev Version: 6.0
 # Publish date: Feb 24th, 2021
 # 
-# Release Version: 1.6.0
-# Release date: Mar 2nd, 2021
+# Release Version: 1.6.1
+# Release date: Mar 5th, 2021
 #
 #=============================================================================================================================
 
@@ -1194,12 +1194,15 @@ ELSE {
             write-host $username -nonewline
             write-host ''' -Password ''' -nonewline
             write-host $password -nonewline
-            write-host '''' -NoNewline
             IF($vnetExist -eq $false){
+                write-host '''' -NoNewline
                 write-host '-AllowHTTP ''' -nonewline
                 write-host $AllowHTTP -nonewline
                 write-host ''' -AllowFWX ''' -nonewline
                 write-host $AllowFWX -nonewline
+                write-host ''''
+            }
+            ELSE{
                 write-host ''''
             }
             Write-Host ('='*200)
