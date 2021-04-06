@@ -87,7 +87,7 @@ Optionally, parameters can be passed in with the following parameter names:
 - **FEVMSize** *(B2s, B2ms, D3_v2,...)*  
 - **UseSSD** *(Y/N)*  
 - **VMPrefix**  
-- **ICONICSversion** *(10.96.1, 10.96.2)*  
+- **ICONICSversion** *(10.96.1, 10.96.2, 10.97)*  
 - **Username**  
 - **Password** *(min. 12 characters, one upper, one lower, one number, one symbol)*  
 - **AllowHTTP** *(Y/N)*  
@@ -103,26 +103,26 @@ For any parameter that is not defined when triggering the Cmdlet, prompts will s
 ## Examples  
 ### Create a 3 layer architecture suitable for small to medium solutions, composed of Asset, Historian, and Aggregator layers.  
 
-    ./New-IcoAzArch.ps1 -SubscriptionName MySubscription -ResourceGroupName MyResourceGrp -Location eastus -IOVMCount 0 -AssetVMCount 1 -AssetVMSize B4ms -AlarmVMCount 0 -HistVMCount 1 -HistVMSize B4ms -IntVMCount 0 -AggVMCount 1 -AggVMSize B4ms -FEVMCount 0 -UseSSD N -VMPrefix IcoVM -ICONICSversion 10.96.2 -Username iconicsadmin -AllowHTTP Y -AllowFWX Y  
+    ./New-IcoAzArch.ps1 -SubscriptionName MySubscription -ResourceGroupName MyResourceGrp -Location eastus -IOVMCount 0 -AssetVMCount 1 -AssetVMSize B4ms -AlarmVMCount 0 -HistVMCount 1 -HistVMSize B4ms -IntVMCount 0 -AggVMCount 1 -AggVMSize B4ms -FEVMCount 0 -UseSSD N -VMPrefix IcoVM -ICONICSversion 10.97 -Username iconicsadmin -AllowHTTP Y -AllowFWX Y  
 
 The example above would prompt for the *iconicsadmin* password and then create the following:  
 1. Set the subscription to *MySubscription*.  
 1. Create *MyResourceGrp* in the *eastus* region if it doesn't exist, otherwise use the existing resource group.  
 1. If a new resource group is created, also create the network components like subnet, VNet and NSG. The NSG will have *HTTP (TCP port 80)* and *FrameWorX (TCP port 8778)* allowed for inbound.  
-1. Use ICONICS Suite *10.96.2* for all VMs.  
+1. Use ICONICS Suite *10.97* for all VMs.  
 1. Create *1* Asset VM of *B4ms* size using *Standard HDD* OS disk.  
 1. Create *1* Historian VM of *B4ms* size using *Standard HDD* OS disk.  
 1. Create *1* Aggregator VM of *B4ms* size using *Standard HDD* OS disk.  
 
 ### Create a 5 layer architecture suitable for large complex solutions, composed of IO, Asset, Historian, Aggregator, and Front End layers.
 
-    ./New-IcoAzArch.ps1 -SubscriptionName MySubscription -ResourceGroupName MyResourceGrp -Location eastus -IOVMCount 1 -IOVMSize B2ms -AssetVMCount 1 -AssetVMSize B4ms -AlarmVMCount 0 -HistVMCount 1 -HistVMSize B4ms -IntVMCount 0 -AggVMCount 1 -AggVMSize B4ms -FEVMCount 1 -FEVMSize B4ms -UseSSD N -VMPrefix IcoVM -ICONICSversion 10.96.2 -Username iconicsadmin -AllowHTTP Y -AllowFWX Y  
+    ./New-IcoAzArch.ps1 -SubscriptionName MySubscription -ResourceGroupName MyResourceGrp -Location eastus -IOVMCount 1 -IOVMSize B2ms -AssetVMCount 1 -AssetVMSize B4ms -AlarmVMCount 0 -HistVMCount 1 -HistVMSize B4ms -IntVMCount 0 -AggVMCount 1 -AggVMSize B4ms -FEVMCount 1 -FEVMSize B4ms -UseSSD N -VMPrefix IcoVM -ICONICSversion 10.97 -Username iconicsadmin -AllowHTTP Y -AllowFWX Y  
 
 The example above would prompt for the *iconicsadmin* password and then create the following:  
 1. Set the subscription to *MySubscription*.  
 1. Create *MyResourceGrp* in the *eastus* region if it doesn't exist, otherwise use the existing resource group.  
 1. If a new resource group is created, also create the network components like subnet, VNet and NSG. The NSG will have *HTTP (TCP port 80)* and *FrameWorX (TCP port 8778)* allowed for inbound.  
-1. Use ICONICS Suite *10.96.2* for all VMs.  
+1. Use ICONICS Suite *10.97* for all VMs.  
 1. Create *1* IO VM of *B2ms* size using *Standard HDD* OS disk.  
 1. Create *1* Asset VM of *B4ms* size using *Standard HDD* OS disk.  
 1. Create *1* Historian VM of *B4ms* size using *Standard HDD* OS disk.  

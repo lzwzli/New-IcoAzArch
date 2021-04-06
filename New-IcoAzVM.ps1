@@ -5,11 +5,11 @@
 # VMs can be created in any region that is supported by your subscription.
 #
 # Author: Zhi Wei Li
-# Dev Version: 6.0
-# Publish date: Feb 24th, 2021
+# Dev Version: 7.0
+# Publish date: Apr 6th, 2021
 # 
-# Release Version: 1.6.1
-# Release date: Mar 5th, 2021
+# Release Version: 1.7
+# Release date: Apr 6th, 2021
 #
 #=============================================================================================================================
 
@@ -303,16 +303,18 @@ function GetVMName {
 function GetICONICSVersion {
     $ICONICSversion=''
     #Check ICONICS version
-    while (-NOT ($ICONICSversion -eq '10.96.1' -OR $ICONICSversion -eq '10.96.2')){
-        IF ($ICONICSversion -and ($ICONICSversion -ne '10.96.1' -or $ICONICSversion -ne '10.96.2')){
-            PrintError 'Enter 10.96.1 or 10.96.2'
+    while (-NOT ($ICONICSversion -eq '10.96.1' -OR $ICONICSversion -eq '10.96.2' -OR $ICONICSversion -eq '10.97')){
+        IF ($ICONICSversion -and ($ICONICSversion -ne '10.96.1' -or $ICONICSversion -ne '10.96.2' -or $ICONICSversion -ne '10.97')){
+            PrintError 'Enter 10.96.1 or 10.96.2 or 10.97'
         }
 
         write-host 'Enter ICONICS Suite version. ' -ForegroundColor Green -NoNewline
         write-host ' [10.96.1] ' -ForegroundColor white -BackgroundColor Black -NoNewline
         write-host ' ' -NoNewline
         write-host ' [10.96.2] ' -ForegroundColor white -BackgroundColor Black -NoNewline
-        write-host ' '	
+        write-host ' '	 -NoNewline
+        write-host ' [10.97] ' -ForegroundColor white -BackgroundColor Black -NoNewline
+        wite-host ' '
         [string]$ICONICSversion=Read-Host 'ICONICS version'
     }
     return $ICONICSversion
