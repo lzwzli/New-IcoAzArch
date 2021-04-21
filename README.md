@@ -26,6 +26,8 @@ Creates an ICONICS architecture that is made up of the ICONICS recommended funct
 
 Each layer described above are optional depending on the solution size, need for scalability and concurrent client counts.  
 
+When you deploy ICONICS software, Microsoft can identify the installation of ICONICS software with the deployed Azure resources. Microsoft can correlate these resources used to support the software. Microsoft collects this information to provide the best experiences with their products and to operate their business. The data is collected and governed by Microsoft's privacy policies, located at https://www.microsoft.com/trustcenter.  
+
 ## Dependencies  
 Requires **New-IcoAzVM** cmdlet version 5.7 (included in package) or newer.  
 

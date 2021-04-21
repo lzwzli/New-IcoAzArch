@@ -6,11 +6,11 @@
 # VMs can be created in any region that is supported by your subscription.
 #
 # Author: Zhi Wei Li
-# Dev Version: 1.3
-# Publish date: Apr 6th, 2021
+# Dev Version: 1.4
+# Publish date: Apr 21st, 2021
 # 
-# Release Version: 1.2.0
-# Release date: Apr 6th 2021
+# Release Version: 1.3.0
+# Release date: Apr 21st 2021
 #
 #=============================================================================================================================
 

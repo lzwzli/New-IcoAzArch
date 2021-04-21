@@ -5,11 +5,11 @@
 # VMs can be created in any region that is supported by your subscription.
 #
 # Author: Zhi Wei Li
-# Dev Version: 7.0
-# Publish date: Apr 6th, 2021
+# Dev Version: 7.1
+# Publish date: Apr 21st, 2021
 # 
-# Release Version: 1.7
-# Release date: Apr 6th, 2021
+# Release Version: 1.8
+# Release date: Apr 21st, 2021
 #
 #=============================================================================================================================
 
@@ -314,7 +314,7 @@ function GetICONICSVersion {
         write-host ' [10.96.2] ' -ForegroundColor white -BackgroundColor Black -NoNewline
         write-host ' '	 -NoNewline
         write-host ' [10.97] ' -ForegroundColor white -BackgroundColor Black -NoNewline
-        wite-host ' '
+        write-host ' '
         [string]$ICONICSversion=Read-Host 'ICONICS version'
     }
     return $ICONICSversion
@@ -423,6 +423,10 @@ write-host 'All resources created by this script will be placed in the resource 
 write-host 'A new resource group will be created if it doesn''t exist.'
 write-host ' '
 write-host 'VMs can be created in any region that is supported by your subscription.'
+write-host ' '
+Write-Host 'When you deploy ICONICS software, Microsoft can identify the installation of ICONICS software with the deployed Azure resources.'
+write-host 'Microsoft can correlate these resources used to support the software. Microsoft collects this information to provide the best experiences with their products and to operate their business.'
+write-host 'The data is collected and governed by Microsoft''s privacy policies, located at https://www.microsoft.com/trustcenter.'
 write-host ' '
 write-host ('Your Az module version is: '+(get-installedmodule -name Az).Version+'. Minimum version to run this script is 5.4.0') -ForegroundColor Yellow -NoNewline
 Write-Host ' '
@@ -963,6 +967,10 @@ IF($confirmCreation -eq 'N'){
 # Create resources
 #======================================================================================================================
 ELSE {
+    #Set ICONICS partner tag
+    $partnerID='pid-1957e3e7-3056-5829-b9a5-99cbc83651e6'
+    [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent($partnerID)
+
     #Set ICONICS Version
     $ICONICSversionTag=$ICONICSversion
     $ICONICSversion=$ICONICSversion.replace( '.', '')
